@@ -1,5 +1,7 @@
 from .utils import make_metric_tree
 
+METRIC_PREFIX = 'envoy.'
+
 METRICS = {
     'runtime.load_error': {
         'tags': (),

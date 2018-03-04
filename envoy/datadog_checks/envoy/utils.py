@@ -1,7 +1,5 @@
 from collections import defaultdict
 
-METRIC_PREFIX = 'envoy.'
-
 
 def tree():
     return defaultdict(tree)

@@ -28,18 +28,18 @@ class Envoy(AgentCheck):
             )
         except requests.exceptions.Timeout:
             msg = 'Envoy endpoint `{}` timed out after {} seconds'.format(stats_url, timeout)
-            self.service_check(self.SERVICE_CHECK_NAME, AgentCheck.CRITICAL, message=msg)
+            self.service_check(self.SERVICE_CHECK_NAME, AgentCheck.CRITICAL, message=msg, tags=custom_tags)
             self.log.exception(msg)
             return
         except requests.exceptions.RequestException:
             msg = 'Error accessing Envoy endpoint `{}`'.format(stats_url)
-            self.service_check(self.SERVICE_CHECK_NAME, AgentCheck.CRITICAL, message=msg)
+            self.service_check(self.SERVICE_CHECK_NAME, AgentCheck.CRITICAL, message=msg, tags=custom_tags)
             self.log.exception(msg)
             return
 
         if request.status_code != 200:
             msg = 'Envoy endpoint `{}` responded with HTTP status code {}'.format(stats_url, request.status_code)
-            self.service_check(self.SERVICE_CHECK_NAME, AgentCheck.CRITICAL, message=msg)
+            self.service_check(self.SERVICE_CHECK_NAME, AgentCheck.CRITICAL, message=msg, tags=custom_tags)
             self.log.warning(msg)
             return
 
@@ -61,4 +61,4 @@ class Envoy(AgentCheck):
             tags.extend(custom_tags)
             get_method(self, method)(metric, value, tags=tags)
 
-        self.service_check(self.SERVICE_CHECK_NAME, AgentCheck.OK)
+        self.service_check(self.SERVICE_CHECK_NAME, AgentCheck.OK, tags=custom_tags)

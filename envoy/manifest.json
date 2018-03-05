@@ -12,7 +12,7 @@
   ],
   "version": "1.0.0",
   "public_title": "Datadog-Envoy Integration",
-  "categories":["web"],
+  "categories":["cloud", "web"],
   "type":"check",
   "doc_link": "https://docs.datadoghq.com/integrations/envoy/",
   "is_public": true,

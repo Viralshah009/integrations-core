@@ -14,7 +14,7 @@ instances:
   #   tags:
   #     - instance:foo
 
-  #   If the stats page is behind basic auth.
+  #   If the stats page is behind basic auth:
   #   username: USERNAME
   #   password: PASSWORD
 
@@ -28,3 +28,6 @@ instances:
   #   settings enabled and attempt to reach the URL directly.
   #
   #   skip_proxy: false
+
+  #   If you need to specify a custom timeout in seconds (default is 20):
+  #   timeout: 20

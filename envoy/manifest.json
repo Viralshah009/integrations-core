@@ -1,8 +1,6 @@
 {
   "maintainer": "help@datadoghq.com",
-  "manifest_version": "0.1.0",
-  "max_agent_version": "6.0.0",
-  "min_agent_version": "5.6.3",
+  "manifest_version": "1.0.0",
   "name": "envoy",
   "short_description": "Gain insight into your distributed systems using Envoy.",
   "guid": "007f4e6c-ac88-411e-ad81-f0272539b5ff",

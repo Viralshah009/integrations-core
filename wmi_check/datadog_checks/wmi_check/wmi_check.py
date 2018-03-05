@@ -39,7 +39,7 @@ class WMICheck(WinWMICheck):
 
         constant_tags = instance.get('tags', [])
         if constant_tags == []:
-            constant_tags = instance.get('constant_tags')
+            constant_tags = instance.get('constant_tags', [])
             self.log.warning("`constant_tags` is being deprecated, please use `tags`")
 
         # Create or retrieve an existing WMISampler

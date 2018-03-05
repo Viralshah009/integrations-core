@@ -115,7 +115,7 @@ class WMITestCase(AgentCheckTest, TestCommonWMI):
         'metrics': [["AvgDiskBytesPerWrite", "winsys.disk.avgdiskbytesperwrite", "gauge"],
                     ["FreeMegabytes", "winsys.disk.freemegabytes", "gauge"]],
         'tag_by': "Name",
-        'tags': ["foobar"],
+        'constant_tags': ["foobar"],
     }
 
     WMI_NON_DIGIT_PROP = {
@@ -300,13 +300,13 @@ class WMITestCase(AgentCheckTest, TestCommonWMI):
 
         # Log a warning about 'NonDigit' property
         self.run_check(config, mocks={'log': logger})
-        self.assertEquals(logger.warning.call_count, 1)
+        self.assertEquals(logger.warning.call_count, 2)
 
         # No warnings on `tag_by` property neither on `Name`
         del wmi_instance['metrics'][0]
         wmi_instance['tag_by'] = "NonDigit"
         self.run_check(config, mocks={'log': logger})
-        self.assertEquals(logger.warning.call_count, 1)
+        self.assertEquals(logger.warning.call_count, 2)
 
     def test_query_timeouts(self):
         """
